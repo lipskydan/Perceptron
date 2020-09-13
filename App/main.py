@@ -3,7 +3,6 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 
-
 class Perceptron(object):
     """Perceptron classifier.
 
@@ -74,6 +73,7 @@ class Perceptron(object):
         """Return class label after unit step"""
         return np.where(self.net_input(X) >= 0.0, 1, -1)
 
+
 v1 = np.array([1, 2, 3])
 v2 = 0.5 * v1
 np.arccos(v1.dot(v2) / (np.linalg.norm(v1) * np.linalg.norm(v2)))
@@ -89,7 +89,6 @@ df.tail()
 
 df = pd.read_csv('iris.data', header=None)
 df.tail()
-
 
 # select setosa (щетинистый) and versicolor (разноцветный)
 y = df.iloc[0:100, 4].values
@@ -110,5 +109,21 @@ plt.legend(loc='upper left')
 plt.title('График рассеяния')
 
 plt.savefig('images/scatter-plot.png', dpi=300)
+
+plt.show()
+
+
+# ### Training the perceptron model
+
+ppn = Perceptron(eta=0.1, n_iter=10)
+
+ppn.fit(X, y)
+
+plt.plot(range(1, len(ppn.errors_) + 1), ppn.errors_, marker='o')
+plt.xlabel('Эпохи')
+plt.ylabel('Количество обновлений')
+plt.title('График ошибок неправильной классификации')
+
+plt.savefig('images/misclassification-errors-plot.png', dpi=300)
 
 plt.show()
