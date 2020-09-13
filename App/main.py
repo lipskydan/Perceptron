@@ -1,4 +1,8 @@
 import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+
+
 
 class Perceptron(object):
     """Perceptron classifier.
@@ -79,3 +83,32 @@ np.arccos(v1.dot(v2) / (np.linalg.norm(v1) * np.linalg.norm(v2)))
 # ...
 
 # ### Reading-in the Iris data
+
+df = df = pd.read_csv('/Users/danial/Desktop/Perceptron/iris.data', header=None)
+df.tail()
+
+df = pd.read_csv('iris.data', header=None)
+df.tail()
+
+
+# select setosa (щетинистый) and versicolor (разноцветный)
+y = df.iloc[0:100, 4].values
+y = np.where(y == 'Iris-setosa', -1, 1)
+
+# extract sepal length and petal length
+X = df.iloc[0:100, [0, 2]].values
+
+# plot data
+plt.scatter(X[:50, 0], X[:50, 1],
+            color='red', marker='o', label='щетинистый')
+plt.scatter(X[50:100, 0], X[50:100, 1],
+            color='blue', marker='x', label='разноцветный')
+
+plt.xlabel('длина чашелистика [cм]')
+plt.ylabel('длина лепестка [см]')
+plt.legend(loc='upper left')
+plt.title('График рассеяния')
+
+plt.savefig('images/scatter-plot.png', dpi=300)
+
+plt.show()
