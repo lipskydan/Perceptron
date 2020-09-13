@@ -85,7 +85,7 @@ np.arccos(v1.dot(v2) / (np.linalg.norm(v1) * np.linalg.norm(v2)))
 
 # ### Reading-in the Iris data
 
-df = df = pd.read_csv('/Users/danial/Desktop/Perceptron/iris.data', header=None)
+df = pd.read_csv('/Users/danial/Documents/GitHub/Perceptron/App/iris.data', header=None)
 df.tail()
 
 df = pd.read_csv('iris.data', header=None)
@@ -135,7 +135,7 @@ plt.show()
 def plot_decision_regions(X, y, classifier, resolution=0.02):
     # setup marker generator and color map
     markers = ('s', 'x', 'o', '^', 'v')
-    colors = ('red', 'blue', 'lightgreen', 'gray', 'cyan')
+    colors = ('red', 'darkblue', 'lightgreen', 'gray', 'pink')
     cmap = ListedColormap(colors[:len(np.unique(y))])
 
     # plot the decision surface
